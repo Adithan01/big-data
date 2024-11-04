@@ -1,0 +1,25 @@
+VPC
+----
+
+1) delete the default vpc
+(REFRESH all below vpc like subnet etc)
+2)create vpc(SNU-DC) with 192.168.0.0/16 network
+3)create 2 subnets - AIDS(192.168.1.0/24) AND IOT(192.168.2.0/24) both in same AZ(AZ1 in this case)
+4)create internet gateway(SNU-DC-IGW) and attatch to the SNU-DC VPC
+5)rename route table to SNU-DC-Route-Table and then go to Edit routes and add routes
+	choose 0.0.0.0/0 and internet gateway
+6)create ec2 instances, one for aids and one for iot(allow security group for port 22 and 80,ICMP protocol)
+	create instance with name AIDS-Web-Server and ubuntu and create key pair and .ppk for putty(SNU-DC-LAB.PPK)
+	switch subnet to aids and enable auto assign public ip and change security group name to AIDS-Server-SG
+	security group rule 2 to http and source type to anywhere
+	ADVANCED NETWORK configuration 
+		primary ip 192.168.1.4
+	then launch instance
+	After launching instance go to instances and copy public ip and open putty application
+	put ip and then go to ssh auth credentials and put private key and go to session and default session and open
+	and login with ubuntu and sudo apt update and sudo apt install net-tools then ifconfig sudo apt install apache2
+	THEN cd /var/www/html/ then ls will show index.html then sudo chmod 777 index.html then echo "<h1>welcome to aids server</h1>" > index.html put public ip in google you will get website
+
+
+do the same for iot server and then ping 192.168.2.4
+DONE
