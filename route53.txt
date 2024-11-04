@@ -1,0 +1,17 @@
+URL : https://www.godaddy.com/
+Username : aws-ng
+password : Welcome1!
+6
+Create a sub domain with your 12 digit registration number
+eg : 21100101001.ngaws.xyz
+b) Create a Hosted Zone in Route 53 service for your subdomain
+c) Get the name server(any one) information from the Route 53 dashboard and update the NS record in godaddy portal for your subdomain.
+d) Create an EC2 instance (Name : Web Server) with elastic public ip
+e) Install apache application(web service) and make vm as web server
+f) Create a A record in your hosted zone with the following details
+subdomain : www
+IP : elastic ip allotted for your account
+routing policy : simple
+g) check the website reachability with the url
+url : www.<registration_no>.ngaws.xyz
+eg : www.21100101001.ngaws.xyz
